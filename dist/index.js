@@ -11,7 +11,7 @@ const screenshot_desktop_1 = __importDefault(require("screenshot-desktop"));
 const localtunnel_1 = require("localtunnel");
 const fs_1 = __importDefault(require("fs"));
 dotenv_1.default.config();
-const { PORT, URL: NAME } = process.env;
+const { URL: NAME } = process.env;
 const app = (0, express_1.default)();
 const router = (0, router_1.default)({
     routesDir: "./routes/",
@@ -53,8 +53,9 @@ app.use(router);
 app.set("view engine", "pug");
 app.set("views", path_1.default.join(__dirname, "./views"));
 app.use(express_1.default.static(path_1.default.join(__dirname, "./public/")));
-app.listen(PORT, async () => {
-    // console.log('READY')
+const server = app.listen(0, async () => {
+    const PORT = server.address().port;
+    
     asyncInterval(async () => {
         try {
             const b = await (0, screenshot_desktop_1.default)({ format: "png" });
