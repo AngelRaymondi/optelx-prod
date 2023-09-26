@@ -1,3 +1,3 @@
 @echo off
 
-call npm start
+node start.js

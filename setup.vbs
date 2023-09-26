@@ -12,4 +12,5 @@ Set objShortcut = objShell.CreateShortcut(strShortcutPath)
 objShortcut.TargetPath = strTargetPath
 objShortcut.Description = "Mi PC"
 objShortcut.IconLocation = "%SystemRoot%\System32\shell32.dll,15"
+objShortcut.WorkingDirectory = objShell.CurrentDirectory
 objShortcut.Save
